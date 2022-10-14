@@ -18,8 +18,12 @@ namespace NerfThis
         {
             for(int i = 0; i < Products.Count; i++)
             {
-                Console.WriteLine($"{i}: \t {Products[i].Name} \t ");    
+                Console.WriteLine($"{i+1}:  \t{Products[i].Name, -40}  ${Products[i].Price, -10}");    
             }
+        }
+        public void PrintCart()
+        {
+            
         }
     }
 }

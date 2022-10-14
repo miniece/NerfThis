@@ -13,15 +13,15 @@
 
             Product AmmoBelt = new Product("Ammo Belt", Categories.Accessories, "Never lose a dart and stay ready with this ammo belt.", 25.95);
             Product DartRover = new Product("Nerf Dart Rover", Categories.Accessories, "Retrieves a maximum of 100 darts. Plow action is built to capture the most darts.", 34.99);
-            Product BlasterRack = new Product("NerfLongshot", Categories.Accessories, "Upgrade your battles to the elite level. This storage rack can hold up to 20 different sizes with shelves, drawers, rail mounts, and hooks.", 59.99);
+            Product BlasterRack = new Product("Blaster Rack", Categories.Accessories, "Upgrade your battles to the elite level. This storage rack can hold up to 20 different sizes with shelves, drawers, rail mounts, and hooks.", 59.99);
 
-            Product Football = new Product("Football", Categories.Toys, "Have some lighthearted fun with friends and not try to destroy your enemies.", 15.00);
-            Product BasketballHoop = new Product("Nerf Basketball Hoop", Categories.Toys, "Dunk on all of your haters with this full size basketball made completely of foam!", 129.99);
-            Product SoccerBall = new Product("NerfLongshot", Categories.Toys, "Kick your enemies when the sun don't shine with this foam soccer ball made with metal center.", 45.93);
+            Product Football = new Product("Football", Categories.Toys, "Have some lighthearted fun with friends and not try to destroy your enemies.", 15.99);
+            Product BasketballHoop = new Product("Nerf Basketball Hoop", Categories.Toys, "Dunk on all of your haters with this full size basketball hoop made completely of foam!", 129.99);
+            Product SoccerBall = new Product("Soccer Ball", Categories.Toys, "Kick your enemies when the sun don't shine with this foam soccer ball made with metal center.", 45.93);
 
             Product FoamArrows = new Product("Foam Arrows", Categories.Ammunition, " Stock up on these arrows for the Nerf Zombie Deadbolt blaster (sold seperately). Colors may vary.", 28.99);
             Product Darts = new Product("Nerf N-Strike Elite Series", Categories.Ammunition, "Let the battles begin. Absolutely destroy your enemies with this 1000 piece foam darts. You'll have maximum impact on the battlefield.", 36.99);
-            
+
 
             List<Product> inventory = new List<Product>();
             inventory.Add(NerfLongshot);
@@ -37,13 +37,59 @@
             inventory.Add(FoamArrows);
             inventory.Add(Darts);
             Store NerfThis = new Store(inventory);
-            NerfThis.PrintInventory();
+            List<Product> userCart = new List<Product>();
 
-            Console.WriteLine("Welcome to the NerfThis store. Where you can choose to either slay your enemies and reclaim your seat to the throne or have some wholesome outdoor fun :)");
+            Console.WriteLine("Welcome to the NerfThis store. \nWhere you can choose to either slay your enemies and reclaim your seat on the throne \nor have some wholesome outdoor fun :)");
             Console.WriteLine("");
-            Console.WriteLine("Which product would you like to order?");
+            double itemTotal = 0;
+            bool purchaseAgain = true;
+            while (purchaseAgain == true)
+            {
+                NerfThis.PrintInventory();
+                Console.WriteLine();
+                Console.WriteLine("Which product would you like to purchase? Please select by number.");
+                int numPurchased = int.Parse(Console.ReadLine());
+                Console.WriteLine($"{inventory[numPurchased - 1].Name}: {inventory[numPurchased - 1].Description} \n");
+                Console.WriteLine($"How many {inventory[numPurchased - 1].Name}'s would you like to purchase?");
+                int quantity = int.Parse(Console.ReadLine());
+                for (int i = 0; i < quantity; i++)
+                {
+                    userCart.Add(inventory[numPurchased - 1]);
+                }
+
+                foreach (Product cart in userCart)
+                {
+                    Console.WriteLine($"{cart.Name} {cart.Price}");
+                }
+                itemTotal += Math.Round(inventory[numPurchased - 1].Price * quantity, 2);
+                Console.WriteLine(itemTotal);
+
+                purchaseAgain = AskAgain();
+            }
+            Console.WriteLine(itemTotal);
+            double total = Math.Round(itemTotal * 1.06, 2);
+            Console.WriteLine(total);
 
 
         }
+        static bool AskAgain()
+        {
+            Console.WriteLine("Would you like to purchase more items? Y/N");
+            string response = Console.ReadLine().ToLower();
+            if (response == "y" || response == "yes")
+            {
+                return true;
+            }
+            else if (response == "n" || response == "no")
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("\nI didn't understand that. Please try again!");
+                return AskAgain();
+            }
+        }
+
     }
 }
