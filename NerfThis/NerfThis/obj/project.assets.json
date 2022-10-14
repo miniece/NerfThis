@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\xmini\\.nuget\\packages\\": {}
+    "C:\\Users\\Owner\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xmini\\Documents\\BootcampLabs\\NerfThis\\NerfThis\\NerfThis.csproj",
+      "projectUniqueName": "C:\\Users\\Owner\\Desktop\\C# Bootcamp\\Group Projects\\Project 1\\NerfThis\\NerfThis\\NerfThis\\NerfThis.csproj",
       "projectName": "NerfThis",
-      "projectPath": "C:\\Users\\xmini\\Documents\\BootcampLabs\\NerfThis\\NerfThis\\NerfThis.csproj",
-      "packagesPath": "C:\\Users\\xmini\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xmini\\Documents\\BootcampLabs\\NerfThis\\NerfThis\\obj\\",
+      "projectPath": "C:\\Users\\Owner\\Desktop\\C# Bootcamp\\Group Projects\\Project 1\\NerfThis\\NerfThis\\NerfThis\\NerfThis.csproj",
+      "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Owner\\Desktop\\C# Bootcamp\\Group Projects\\Project 1\\NerfThis\\NerfThis\\NerfThis\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\xmini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

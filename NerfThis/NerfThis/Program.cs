@@ -36,6 +36,8 @@
             inventory.Add(SoccerBall);
             inventory.Add(FoamArrows);
             inventory.Add(Darts);
+            Store NerfThis = new Store(inventory);
+            NerfThis.PrintInventory();
 
             Console.WriteLine("Welcome to the NerfThis store. Where you can choose to either slay your enemies and reclaim your seat to the throne or have some wholesome outdoor fun :)");
             Console.WriteLine("");
