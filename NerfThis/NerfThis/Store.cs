@@ -101,19 +101,26 @@ namespace NerfThis
                 purchaseAgain = AskAgain();
             }
             PurchaseTotal(itemTotal);
+
+            Receipt(Inventory, uniqueNames, userCart, numPurchased);
         }
-        public static void Receipt()
+        public static void Receipt(List<Product> Inventory, List<string> uniqueNames, List<Product> userCart, int numPurchased)
         {
-            List<Product> userCart = new List<Product>();
-            List<string> uniqueNames = new List<string>();
 
             Console.WriteLine("Receipt:");
+            uniqueNames = userCart.Select(item => item.Name).Distinct().ToList();
+
             foreach (string item in uniqueNames)
             {
                 int amount = userCart.Count(i => i.Name == item);
-                Console.WriteLine($"{amount}x {item}");
+                Product productx = userCart.Where(c => c.Name == item).First();
+                Console.WriteLine($"{amount} {item} @ {productx.Price}");
             }
-
+            //subtotal
+            //total tax
+            //final total
+            //payment type
+            //thank 4 buying
         }
         public static void PurchaseTotal(double itemTotal)
         {
