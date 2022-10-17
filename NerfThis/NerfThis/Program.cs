@@ -69,7 +69,7 @@
             Console.WriteLine(itemTotal);
             double total = Math.Round(itemTotal * 1.06, 2);
             Console.WriteLine(total);
-
+            Money.PaymentType(total);
 
         }
         static bool AskAgain()
