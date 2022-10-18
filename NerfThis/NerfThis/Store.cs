@@ -95,12 +95,12 @@ namespace NerfThis
                 //catch exception if the user inputs an inproper index or anything that is not a number
                 catch(ArgumentOutOfRangeException e)
                 {
-                    Console.WriteLine("That index clearly don't exist, dumb dumb.\n");
+                    Console.WriteLine("That index clearly don't exist, DUMB DUMB.\n");
                     continue;
                 }
                 catch(FormatException e)
                 {
-                    Console.WriteLine("You're an idiot, that's clearly not a number.\n");
+                    Console.WriteLine("You're an IDIOT, that's clearly NOT a number.\n");
                     continue;
                 }
 
@@ -145,10 +145,6 @@ namespace NerfThis
             Console.WriteLine($"Grand total: {grandTotal}");
             Console.WriteLine($"Payed with {paymentType}");
             Console.WriteLine("Thank you for shopping at NerfThis!");
-            //total tax
-            //final total
-            //payment type
-            //thank 4 buying
         }
         public static string PurchaseTotal(double itemTotal)
         {
