@@ -49,7 +49,7 @@ namespace NerfThis
                     {
                         Console.WriteLine("Perfect! Paying with Check");
                         Console.WriteLine("What is the check number?");
-                        string checkNumber = Console.ReadLine();
+                        int checkNumber = int.Parse(Console.ReadLine());
                         
                         break;
 
@@ -59,7 +59,7 @@ namespace NerfThis
                         Console.WriteLine("Nice! Paying with credit.");
 
                         Console.WriteLine("What is your credit card number?");
-                        string creditNumber = Console.ReadLine();
+                        int creditNumber = int.Parse(Console.ReadLine());
 
                         Console.WriteLine("What is your expiration date?");
                         int expDate = int.Parse(Console.ReadLine());
@@ -80,7 +80,8 @@ namespace NerfThis
                 }
                 catch (FormatException e)
                 {
-                    Console.WriteLine("(╯°□°）╯︵ ┻━┻  t(-_-t)");
+                    Console.OutputEncoding = System.Text.Encoding.UTF8;
+                    Console.WriteLine("(╯°□°)╯ ┻━┻  t(-_-t)");
                     goAgain = true;
                     
                 }
