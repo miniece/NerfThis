@@ -4,6 +4,7 @@
     {
         static void Main()
         {
+
             //method that calls the class to run the program
             Store NerfThis = new Store();
 

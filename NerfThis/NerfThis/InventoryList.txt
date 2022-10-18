@@ -1,0 +1,7 @@
+﻿Nerf Longshot,Weapons,Aim with accuracy and pinpoint precision using the tageting scope. Can launch foam arrows up to 35 feet away.,63.99
+Nerf Zombie Blaster,Weapons,The blaster is morotized so you can rev it up and shoot all 18 darts om a row with rapid-fire blasting.,79.95
+Nerf Battle Racer Kart,Vehicles,Slay your enemies with this ride on cart. Equipped with placeholders for blasters and darts, bucket seat with hollows for darts, and 3 point steering.,273.59
+Nerf Blaster Scooter,Vehicles,Ride in style with this fully motorized, dual trigger rapid fire action that includes 2 clips and 12 elite darts.,149.99
+Ammo Belt,Accessories,Never lose a dart and stay ready with this ammo belt,25.95
+Nerf Dart Rover,Accessories,Retrieves a maximum of 100 darts. Plow action is built to capture the most darts.,34.99
+Blaster Rack,Accessories,Upgrade your battles to the elite level. This storage rack can hold up to 20 different sizes with shelves, drawers, rail mounts, and hooks.,59.99

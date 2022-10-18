@@ -12,6 +12,7 @@ namespace NerfThis
         public Store()
         {
 
+            //ReadStore();
             //create list of products and add them to the Store Inventory
             Product NerfLongshot = new Product("Nerf Longshot", Categories.Weapons, "Aim with accuracy and pinpoint precision using the tageting scope. Can launch foam arrows up to 35 feet away.", 63.99);
             Product ZombieBlaster = new Product("Nerf Zombie Blaster", Categories.Weapons, "The blaster is morotized so you can rev it up and shoot all 18 darts om a row with rapid-fire blasting.", 79.95);
@@ -43,11 +44,35 @@ namespace NerfThis
             Inventory.Add(SoccerBall);
             Inventory.Add(FoamArrows);
             Inventory.Add(Darts);
+
         }
         public Store(List<Product> products)
         {
             Inventory = products;
+            
         }
+
+        //public List<Product> ReadStore()
+        //{
+        //    string relPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+        //    string fixedRel = relPath.Substring(0, relPath.LastIndexOf("bin"));
+        //    StreamReader reader = new StreamReader(fixedRel + @"\InventoryList.txt");
+        //    string textDump = reader.ReadToEnd();
+
+        //    string[] inventory = textDump.Split('\n');
+        //    List<Product> InventoryList = new List<Product>();
+
+        //    foreach (string item in inventory)
+        //    {
+        //        string[] propertyList = item.Split(',');
+        //        Product p = new Product(propertyList[0], (Categories)Enum.Parse(typeof(Categories), propertyList[1]), propertyList[2], double.Parse(propertyList[3]));
+        //        InventoryList.Add(p);
+        //    } 
+           
+        //    reader.Close();
+        //    return InventoryList;
+
+        //}
 
         //method used to print out full List of Products aka Store
         public void PrintInventory()
