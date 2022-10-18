@@ -11,6 +11,8 @@ namespace NerfThis
         List<Product> Inventory { get; set; } = new List<Product>();
         public Store()
         {
+
+            //create list of products and add them to the Store Inventory
             Product NerfLongshot = new Product("Nerf Longshot", Categories.Weapons, "Aim with accuracy and pinpoint precision using the tageting scope. Can launch foam arrows up to 35 feet away.", 63.99);
             Product ZombieBlaster = new Product("Nerf Zombie Blaster", Categories.Weapons, "The blaster is morotized so you can rev it up and shoot all 18 darts om a row with rapid-fire blasting.", 79.95);
 
@@ -47,6 +49,7 @@ namespace NerfThis
             Inventory = products;
         }
 
+        //method used to print out full List of Products aka Store
         public void PrintInventory()
         {
             for(int i = 0; i < Inventory.Count; i++)
@@ -54,8 +57,12 @@ namespace NerfThis
                 Console.WriteLine($"{i+1}:  \t{Inventory[i].Name, -40}  ${Inventory[i].Price, -10}");    
             }
         }
+
+        //method containing the majority of our code
         public void RunStore()
         {
+
+            //initializing variables we will need to add to as the user selects more and more products
             List<Product> userCart = new List<Product>();
             double itemTotal = 0;
             List<string> uniqueNames = new List<string>();
@@ -67,6 +74,9 @@ namespace NerfThis
                 string input = "";
                 try
                 {
+
+                    //print out products with their indexes and have the user input which product they're interested in
+                    //as well as how many of that product they want to purchase
                     PrintInventory();
                     Console.WriteLine($"\nWhich product would you like to purchase? Please select by number.");
                     input = Console.ReadLine();
@@ -81,12 +91,20 @@ namespace NerfThis
                         userCart.Add(Inventory[numPurchased - 1]);
                     }
                 }
+
+                //catch exception if the user inputs an inproper index or anything that is not a number
                 catch(ArgumentOutOfRangeException e)
                 {
-                    Console.WriteLine("That index clearly don't exist, dumb dumb.\r\n");
+                    Console.WriteLine("That index clearly don't exist, dumb dumb.\n");
+                    continue;
+                }
+                catch(FormatException e)
+                {
+                    Console.WriteLine("You're an idiot, that's clearly not a number.\n");
                     continue;
                 }
 
+                //displays the amount and the name of each item the user has selected so far
                 uniqueNames = userCart.Select(item => item.Name).Distinct().ToList();
                 foreach(string item in uniqueNames)
                 {
@@ -94,40 +112,51 @@ namespace NerfThis
                     Console.WriteLine($"{amount}x {item}");
                 }
                 
+                //calculating subtotal
                 itemTotal += Math.Round(Inventory[numPurchased - 1].Price * quantity, 2);
                 String.Format("{0:0.00}", itemTotal);
-                Console.WriteLine($"Current subtotal: {itemTotal}");
+                Console.WriteLine($"Current subtotal: ${itemTotal}");
 
                 purchaseAgain = AskAgain();
             }
-            PurchaseTotal(itemTotal);
 
-            Receipt(Inventory, uniqueNames, userCart, numPurchased);
+            //calculate totals with sales tax
+            string paymentType = PurchaseTotal(itemTotal);
+
+            //call receipt method to print off name of items purchased with amount and price
+            Receipt(Inventory, uniqueNames, userCart, itemTotal, paymentType);
         }
-        public static void Receipt(List<Product> Inventory, List<string> uniqueNames, List<Product> userCart, int numPurchased)
+        public static void Receipt(List<Product> Inventory, List<string> uniqueNames, List<Product> userCart, double subtotal, string paymentType)
         {
+            Console.WriteLine("\n\nReceipt:\n\n");
+            Console.WriteLine(DateTime.Now.ToString("MM/dd/yyyy h:mm tt\n"));
 
-            Console.WriteLine("Receipt:");
             uniqueNames = userCart.Select(item => item.Name).Distinct().ToList();
 
             foreach (string item in uniqueNames)
             {
                 int amount = userCart.Count(i => i.Name == item);
                 Product productx = userCart.Where(c => c.Name == item).First();
-                Console.WriteLine($"{amount} {item} @ {productx.Price}");
+                Console.WriteLine($"{amount} {item, -30} {"@", -5} ${productx.Price, -10}");
             }
-            //subtotal
+            Console.WriteLine($"Subtotal: {subtotal}");
+            Console.WriteLine($"Sales tax: 6%");
+            double grandTotal = Math.Round(subtotal * 1.06,2);
+            Console.WriteLine($"Grand total: {grandTotal}");
+            Console.WriteLine($"Payed with {paymentType}");
+            Console.WriteLine("Thank you for shopping at NerfThis!");
             //total tax
             //final total
             //payment type
             //thank 4 buying
         }
-        public static void PurchaseTotal(double itemTotal)
+        public static string PurchaseTotal(double itemTotal)
         {
             double total = Math.Round(itemTotal * 1.06, 2);
             String.Format("{0:0.00}", total);
             Console.WriteLine($"Total: ${total}");
-            Money.PaymentType(total);
+            string paymentType = Money.PaymentType(total);
+           return paymentType;
         }
         public static bool AskAgain()
         {
@@ -143,7 +172,7 @@ namespace NerfThis
             }
             else
             {
-                Console.WriteLine("\nI didn't understand that. Please try again!");
+                Console.WriteLine("\nARE you ILLITERATE?!");
                 return AskAgain();
             }
         }
